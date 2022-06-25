@@ -17,7 +17,18 @@ function App() {
 	}
 
 	const HandleUrlInputKeyDown = (e) => {
-		if (e.key === 'Enter') GenerateQRCode()
+		if (e.key === 'Enter') {
+			let btn = document.getElementById('btnGenerate')
+			btn.classList.add('active')
+		}
+	}
+
+	const HandleUrlInputKeyUp = (e) => {
+		if (e.key === 'Enter') {
+			let btn = document.getElementById('btnGenerate')
+			btn.click()
+			btn.classList.remove('active')
+		}
 	}
 
 	return (
@@ -28,8 +39,9 @@ function App() {
 				placeholder="e.g. https://google.com"
 				value={url}
 				onChange={(evt) => setUrl(evt.target.value)}
-				onKeyDown={HandleUrlInputKeyDown} />
-			<button onClick={GenerateQRCode}>Generate</button>
+				onKeyDown={HandleUrlInputKeyDown}
+				onKeyUp={HandleUrlInputKeyUp} />
+			<button id="btnGenerate" onClick={GenerateQRCode}>Generate</button>
 			{qrcode && <>
 				<img src={qrcode} />
 				<a href={qrcode} download="qrcode.png">Download</a>
