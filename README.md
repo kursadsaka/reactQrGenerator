@@ -1,2 +1,2 @@
 # reactQrGenerator
-https://kursadsaka.github.io/reactQrGenerator/
+https://kursadsaka.github.io/reactQrGenerator
