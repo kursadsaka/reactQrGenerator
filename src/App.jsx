@@ -13,8 +13,11 @@ function App() {
 		}, (err, url) => {
 			if (err) return console.error(err)
 			setQrcode(url)
-
 		})
+	}
+
+	const HandleUrlInputKeyDown = (e) => {
+		if (e.key === 'Enter') GenerateQRCode()
 	}
 
 	return (
@@ -24,7 +27,8 @@ function App() {
 				type="text"
 				placeholder="e.g. https://google.com"
 				value={url}
-				onChange={(evt) => setUrl(evt.target.value)} />
+				onChange={(evt) => setUrl(evt.target.value)}
+				onKeyDown={HandleUrlInputKeyDown} />
 			<button onClick={GenerateQRCode}>Generate</button>
 			{qrcode && <>
 				<img src={qrcode} />
